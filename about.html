@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About – Digital Terrarium</title>
+    <meta name="description" content="Why Digital Terrarium exists: rescuing creative work from digital obscurity and giving it a place to live." />
+    <meta name="theme-color" content="#0f2922" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2dd4a0;
+            --primary-dark: #1ba87a;
+            --dark: #0a1612;
+            --dark-surface: #0f2922;
+            --dark-elevated: #1a3d35;
+            --text: #e8f4f0;
+            --text-muted: #9cb3ac;
+            --accent: #8b5cf6;
+            --accent-2: #ec4899;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 22, 18, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(45, 212, 160, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            filter: drop-shadow(0 0 8px rgba(45, 212, 160, 0.3));
+        }
+
+        .beta-badge {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent);
+            background: rgba(139, 92, 246, 0.15);
+            padding: 0.25rem 0.5rem;
+            border-radius: 6px;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            margin-left: 0.5rem;
+            vertical-align: middle;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        main {
+            padding-top: 120px;
+            padding-bottom: 4rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .page-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .content-section {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .content-section h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .content-section h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .content-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .content-section em {
+            color: var(--primary);
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        .quote-block {
+            background: var(--dark-surface);
+            border-left: 4px solid var(--primary);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        .quote-block p {
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .quote-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        .quote-attribution {
+            font-size: 0.95rem;
+            color: var(--primary);
+            font-style: normal !important;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(45, 212, 160, 0.1), rgba(139, 92, 246, 0.1));
+            border: 1px solid rgba(45, 212, 160, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .highlight-box h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(45, 212, 160, 0.1);
+            margin-top: 4rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+            }
+
+            main {
+                padding-top: 100px;
+            }
+
+            .content-section h2 {
+                font-size: 1.6rem;
+            }
+
+            .content-section p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="header-content">
+            <a href="index.html" class="brand">
+                <span class="logo">🌿</span>
+                <span>Digital Terrarium</span>
+                <span class="beta-badge">Beta</span>
+            </a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="quickstart.html">Quick Start</a>
+                <a href="download.html">Download</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title">Why Digital Terrarium Exists</h1>
+                <p class="page-subtitle">
+                    Rescuing creative work from digital obscurity
+                </p>
+            </div>
+
+            <div class="content-section">
+                <h2>The Problem</h2>
+                <p>
+                    You spend two hours drawing a character. You develop their backstory, their connections to other characters, the themes they represent. You refine every detail until they feel real, complete, <em>alive</em>. Then you save the file and close the program.
+                </p>
+                <p>
+                    That character, along with the hours of creative energy you poured into them, now sits invisible on a hard drive. Maybe on a computer you haven't turned on in three years. Maybe in a folder buried seventeen layers deep that you'll never open again.
+                </p>
+                <p>
+                    This is the fate of most creative work. Elaborate pocket worlds swim in our heads but never gain tangibility. Or they get committed to digital files only to languish in obscurity, unseen and forgotten.
+                </p>
+
+                <h2>The Philosophy</h2>
+                <p>
+                    Human civilization is fundamentally an <em>information engine</em>. We convert physical resources (food, sunlight, minerals) into meaning. We take low-entropy matter and metabolize it into high-entropy information: stories, art, language, infrastructure, culture.
+                </p>
+                <p>
+                    This transformation is precious. Every creative act represents hours of a finite human life, turned into something that could outlast that life. But for this transformation to matter, the creations must be <em>visible</em>. They must exist somewhere other than locked away in digital storage.
+                </p>
+                <p>
+                    Digital Terrarium exists as a middle step in this process. It's both a safehouse and a display case, a place where creative work can be rescued from obscurity and given a chance to live, move, and be seen.
+                </p>
+
+                <h2>Files You Control</h2>
+                <p>
+                    Digital Terrarium follows the philosophy that made Obsidian beloved by its users: <em>your files belong to you</em>, in formats you control.
+                </p>
+
+                <div class="quote-block">
+                    <p>
+                        "File over app is a philosophy: if you want to create digital artifacts that last, they must be files you can control, in formats that are easy to retrieve and read. Use tools that give you this freedom."
+                    </p>
+                    <p>
+                        "File over app is an appeal to tool makers: accept that all software is ephemeral, and give people ownership over their data."
+                    </p>
+                    <p>
+                        "In the fullness of time, the files you create are more important than the tools you use to create them. Apps are ephemeral, but your files have a chance to last."
+                    </p>
+                    <p class="quote-attribution">- Kepano, CEO of Obsidian</p>
+                </div>
+
+                <p>
+                    Your terrariums live on your machine in simple, readable formats. No proprietary lock-in. No cloud dependency. No subscription required to access your own creations. The software is a tool in service of your files, not the other way around.
+                </p>
+                <p>
+                    Because in the end, the art you make today should still be accessible in ten years, regardless of whether this app, or any app, still exists.
+                </p>
+
+                <h2>A Living Gallery</h2>
+                <p>
+                    This isn't about creating a perfect 3D world or mastering complex tools. It's about giving your creative work a place to <em>exist</em>, somewhere between a gallery and a snow globe, where things you've made can be seen, can move, can feel like they have a life of their own.
+                </p>
+                <p>
+                    Your drawings deserve more than to sit in folders. Your 3D models deserve more than to be rendered once and forgotten. Digital Terrarium gives them a space to inhabit, a window through which they can be seen, and just enough autonomy to feel alive.
+                </p>
+                <p>
+                    It's a small act of rescue. A way to honor the hours you spent creating. A place where your work doesn't disappear. It lives.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© <span id="year"></span> Digital Terrarium · Where creative work can simply exist</p>
+        </div>
+    </footer>
+
+    <script>
+        // Update year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

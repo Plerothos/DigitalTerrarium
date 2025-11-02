@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Download – Digital Terrarium</title>
+    <meta name="description" content="Download Digital Terrarium for Windows, macOS, and Linux. Give your creative work a place to live." />
+    <meta name="theme-color" content="#0f2922" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2dd4a0;
+            --primary-dark: #1ba87a;
+            --dark: #0a1612;
+            --dark-surface: #0f2922;
+            --dark-elevated: #1a3d35;
+            --text: #e8f4f0;
+            --text-muted: #9cb3ac;
+            --accent: #8b5cf6;
+            --accent-2: #ec4899;
+            --gold: #f5a623;
+            --gold-dark: #d68910;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 22, 18, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(45, 212, 160, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            filter: drop-shadow(0 0 8px rgba(45, 212, 160, 0.3));
+        }
+
+        .beta-badge {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent);
+            background: rgba(139, 92, 246, 0.15);
+            padding: 0.25rem 0.5rem;
+            border-radius: 6px;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            margin-left: 0.5rem;
+            vertical-align: middle;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        main {
+            padding-top: 120px;
+            padding-bottom: 4rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .page-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .download-section {
+            max-width: 900px;
+            margin: 0 auto 4rem;
+        }
+
+        .download-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .download-card {
+            background: var(--dark-surface);
+            border-radius: 16px;
+            padding: 2.5rem;
+            border: 1px solid rgba(45, 212, 160, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .download-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(245, 166, 35, 0.2);
+        }
+
+        .download-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .download-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .download-card p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--dark);
+            box-shadow: 0 4px 24px rgba(245, 166, 35, 0.3);
+            width: 100%;
+            justify-content: center;
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(245, 166, 35, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--dark-elevated);
+            color: var(--text);
+            border-color: rgba(45, 212, 160, 0.2);
+            width: 100%;
+            justify-content: center;
+        }
+
+        .btn-secondary:hover {
+            background: var(--dark-surface);
+            border-color: var(--primary);
+        }
+
+        .info-section {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .info-section h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .info-section h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .info-section p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .info-section ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-section li {
+            padding: 0.5rem 0;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .info-section li::before {
+            content: '✓';
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .beta-notice {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(45, 212, 160, 0.1));
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .beta-notice h3 {
+            color: var(--accent);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .beta-notice p {
+            color: var(--text-muted);
+            margin-bottom: 0;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(45, 212, 160, 0.1);
+            margin-top: 4rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+            }
+
+            main {
+                padding-top: 100px;
+            }
+
+            .download-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="header-content">
+            <a href="index.html" class="brand">
+                <span class="logo">🌿</span>
+                <span>Digital Terrarium</span>
+                <span class="beta-badge">Beta</span>
+            </a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="quickstart.html">Quick Start</a>
+                <a href="download.html">Download</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title">Download Digital Terrarium</h1>
+                <p class="page-subtitle">
+                    Choose your platform and start giving your creative work a place to live
+                </p>
+            </div>
+
+            <div class="beta-notice">
+                <h3>⚠️ Beta Software</h3>
+                <p>
+                    Digital Terrarium is currently in beta. Expect some rough edges, but know that active development is ongoing. Your feedback helps shape the future of this tool.
+                </p>
+            </div>
+
+            <div class="download-section">
+                <div class="download-cards">
+                    <div class="download-card">
+                        <div class="icon">🪟</div>
+                        <h3>Windows</h3>
+                        <p>Windows 10 or later<br>64-bit</p>
+                        <a href="#" class="btn btn-secondary">Coming Soon</a>
+                    </div>
+
+                    <div class="download-card">
+                        <div class="icon">🍎</div>
+                        <h3>macOS</h3>
+                        <p>macOS 10.15 or later<br>Intel & Apple Silicon</p>
+                        <a href="#" class="btn btn-secondary">Coming Soon</a>
+                    </div>
+
+                    <div class="download-card">
+                        <div class="icon">🐧</div>
+                        <h3>Linux</h3>
+                        <p>Ubuntu 20.04 or later<br>64-bit</p>
+                        <a href="#" class="btn btn-secondary">Coming Soon</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h2>System Requirements</h2>
+                <p>
+                    Digital Terrarium is designed to run smoothly on a wide range of hardware. Here's what you need:
+                </p>
+                <ul>
+                    <li>4 GB RAM minimum (8 GB recommended)</li>
+                    <li>500 MB available storage space</li>
+                    <li>Graphics card with OpenGL 2.0 support or better</li>
+                    <li>1280x720 minimum screen resolution</li>
+                </ul>
+
+                <h2>What's Included</h2>
+                <p>
+                    Every download includes everything you need to start creating:
+                </p>
+                <ul>
+                    <li>Full desktop application with 3D rendering engine</li>
+                    <li>Asset import support for PNG, JPG, and GLB files</li>
+                    <li>Pre-configured terrarium environments</li>
+                    <li>Built-in behavior system for autonomous movement</li>
+                    <li>Local file storage with no cloud requirements</li>
+                </ul>
+
+                <h2>Getting Started</h2>
+                <p>
+                    Once you've downloaded and installed Digital Terrarium, you're ready to go:
+                </p>
+                <ul>
+                    <li>Import your first asset by dragging in an image or 3D model</li>
+                    <li>Place it in a terrarium and watch it come to life</li>
+                    <li>Assign behaviors to add movement and personality</li>
+                    <li>Save your creation and return to it anytime</li>
+                </ul>
+                <p>
+                    No tutorials required. No steep learning curves. Just pure creative joy.
+                </p>
+
+                <h2>Need Help?</h2>
+                <p>
+                    Have questions or run into issues? Check out the <a href="about.html" style="color: var(--primary); text-decoration: underline;">About page</a> to learn more about the philosophy behind Digital Terrarium, or reach out through our community channels.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© <span id="year"></span> Digital Terrarium · Where creative work can simply exist</p>
+        </div>
+    </footer>
+
+    <script>
+        // Update year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
