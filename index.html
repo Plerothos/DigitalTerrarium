@@ -282,6 +282,56 @@
             margin: 0 auto;
         }
 
+        /* Screenshot Gallery */
+        .screenshot-gallery {
+            background: var(--dark-surface);
+            padding: 6rem 0;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .screenshot-item {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(45, 212, 160, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .screenshot-item:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 12px 48px rgba(45, 212, 160, 0.2);
+        }
+
+        .screenshot-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .screenshot-caption {
+            padding: 1.5rem;
+            background: var(--dark-elevated);
+        }
+
+        .screenshot-caption h3 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .screenshot-caption p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
         /* Features Grid */
         .features-grid {
             display: grid;
@@ -576,7 +626,7 @@
     <header id="header">
         <div class="header-content">
             <div class="brand">
-                <span class="logo">🌿</span>
+                <img src="logo.png" alt="Digital Terrarium Logo" class="logo" style="width: 2.5rem; height: 2.5rem; object-fit: contain;">
                 <span>Digital Terrarium</span>
                 <span class="beta-badge">Beta</span>
             </div>
@@ -597,7 +647,7 @@
             <div class="container">
                 <div class="hero-content fade-in-up">
                     <span class="eyebrow">Where Creative Work Lives</span>
-                    <h1>Your art deserves to exist</h1>
+                    <h1>Your art deserves to exist, not just sit in folders</h1>
                     <p class="hero-subtitle">
                         Transform your 2D drawings and 3D models into living, breathing worlds. 
                         Digital Terrarium is the local-first desktop app that brings your creations 
@@ -606,6 +656,48 @@
                     <div class="cta-group">
                         <a href="download.html" class="btn btn-gold">Download</a>
                         <a href="about.html" class="btn btn-secondary">About</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screenshot Gallery -->
+        <section class="screenshot-gallery">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">See It In Action</h2>
+                    <p class="section-subtitle">
+                        A glimpse into Digital Terrarium's interface and capabilities
+                    </p>
+                </div>
+                <div class="gallery-grid">
+                    <div class="screenshot-item">
+                        <img src="DT_herodisplay.png" alt="Digital Terrarium Main Interface" />
+                        <div class="screenshot-caption">
+                            <h3>Main Interface</h3>
+                            <p>Clean, intuitive workspace for building your terrarium worlds</p>
+                        </div>
+                    </div>
+                    <div class="screenshot-item">
+                        <img src="DT_customtextures.png" alt="Custom Textures" />
+                        <div class="screenshot-caption">
+                            <h3>Custom Textures</h3>
+                            <p>Import and paint with your own textures</p>
+                        </div>
+                    </div>
+                    <div class="screenshot-item">
+                        <img src="DT_framesandcasesdisplay.png" alt="Frames and Display Cases" />
+                        <div class="screenshot-caption">
+                            <h3>Display Your Work</h3>
+                            <p>Picture frames and display cases for showcasing your art</p>
+                        </div>
+                    </div>
+                    <div class="screenshot-item">
+                        <img src="DT_vertexpaint.png" alt="Vertex Painting" />
+                        <div class="screenshot-caption">
+                            <h3>Vertex Painting</h3>
+                            <p>Fine-tune terrain colors with precision painting tools</p>
+                        </div>
                     </div>
                 </div>
             </div>
